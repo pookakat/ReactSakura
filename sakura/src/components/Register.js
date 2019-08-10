@@ -18,9 +18,9 @@ export default class AboutUs extends React.Component {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label for="dateOfBirth" className="col-sm-3">Known As</label>
+                        <label for="knownAs" className="col-sm-3">What do you like to be called?</label>
                         <div className="col-sm-9">
-                            <input className="form-control" placeholder="Known as" formControlName="knownAs" />
+                            <input className="form-control" placeholder="Name" formControlName="knownAs" />
                         </div>
                     </div>
                     <div className="form-group">
@@ -170,16 +170,16 @@ export default class AboutUs extends React.Component {
                     </div>
 
                     <div className="form-group row">
-                        <label for="city" className="col-sm-3">City</label>
+                        <label for="city" className="col-sm-3">Mailing Address</label>
                         <div className="col-sm-9">
-                        <input className="form-control" placeholder="City" formControlName="city" />
+                        <input className="form-control" placeholder="Full Address with City and State" formControlName="city" />
                         </div>
                     </div>
 
                     <div className="form-group row">
-                        <label for="country" className="col-sm-3">Country</label>
+                        <label for="email" className="col-sm-3">E-Mail Address</label>
                         <div className="col-sm-9">
-                        <input className="form-control" placeholder="Country" formControlName="country" />
+                        <input className="form-control" placeholder="Email" formControlName="city" />
                         </div>
                     </div>
 
