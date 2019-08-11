@@ -22,6 +22,22 @@ const Connections = sequelize.define('Connections',{
     freezeTableName: true
 });
 
-Connections.sync();
+Connections.sync().then(()=>{
+Connections.create({
+    userInitiating: 3,
+    userReceiving: 2,
+    accepted: false
+})
+Connections.create({
+    userInitiating: 1,
+    userReceiving: 2,
+    accepted: false
+})
+Connections.create({
+    userInitiating: 1,
+    userReceiving: 4,
+    accepted: true
+})
+});
 
 module.exports = Connections;
