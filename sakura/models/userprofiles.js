@@ -185,7 +185,7 @@ const UserProfiles = sequelize.define('UserProfiles',{
 },{
     freezeTableName: true
 });
-userprofiles.sync().then(()=>{
+UserProfiles.sync().then(()=>{
     UserProfiles.create({
         firstName:'robert',
         lastName: 'paulson',
