@@ -3,11 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint": "^6.1.0",
+    "mysql2": "^1.6.5",
+    "parser": "^0.1.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.0"
+    "react-scripts": "3.1.0",
+    "sequelize": "^5.13.1",
+    "server.js": "^1.0.0",
+    "typescript": "^3.5.3"
   },
   "scripts": {
     "start": "react-scripts start",

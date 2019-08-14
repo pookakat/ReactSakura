@@ -7,7 +7,7 @@ export default class AboutUs extends React.Component {
     };
     render(){
         return(
-            <div className="about-us">
+            <div className="about-us green-bkg">
                 <h2>Find your plant mate</h2>
                 <p className="lead">Come on in and start planting... All you need to do is sign up!</p>
                 <div className="text-center">
