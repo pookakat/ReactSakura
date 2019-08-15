@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
 }
-.green-bkg{
+.ltgreen-bkg{
     background-color: rgb(201, 241, 160);
 }
 .dkgreen-bkg{
@@ -96,14 +96,6 @@
     padding-right: 10px;
     background-color: #F7A6F7; color: #FA0D0D;
     text-align: right;
-}
-.onoffswitch-switch {
-    display: block; width: 18px; margin: 6px;
-    background: #FFFFFF;
-    position: absolute; top: 0; bottom: 0;
-    right: 56px;
-    border: 2px solid #999999; border-radius: 20px;
-    transition: all 0.3s ease-in 0s; 
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
     margin-left: 0;
