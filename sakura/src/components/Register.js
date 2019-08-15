@@ -9,7 +9,7 @@ export default class Register extends React.Component {
     };
     render(){
         return(
-            <div className="register green-bkg">
+            <div id="info-box" className="register ltgreen-bkg">
                 <h2 className="text-center text-primary">Sign Up</h2>
                 <form id="registerForm">
                     <hr />
