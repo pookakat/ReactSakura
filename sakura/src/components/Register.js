@@ -1,6 +1,5 @@
     
 import React from "react";
-import { BrowserRouter as Route} from "react-router-dom";
 import ToggleSwitch from './ToggleSwitch';
 
 export default class Register extends React.Component {
@@ -9,7 +8,7 @@ export default class Register extends React.Component {
     };
     render(){
         return(
-            <div id="info-box" className="register ltgreen-bkg">
+            <div id="info-box" className="register ltpink-bkg">
                 <h2 className="text-center text-primary">Sign Up</h2>
                 <form id="registerForm">
                     <hr />
