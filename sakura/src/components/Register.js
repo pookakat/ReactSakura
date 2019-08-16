@@ -94,9 +94,11 @@ registration = (event) =>{
                route = "/api/userProfiles";
             }
             axios.post(route, {
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: "ACCEPT",
+                //  {
+                //     "Access-Control-Request-Method": "POST",
+                //     "Content-Type": "application/json"
+                // },
                 body:{userData} 
             })
             .then(function(res){
