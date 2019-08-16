@@ -1,6 +1,7 @@
     
 import React from "react";
 import ToggleSwitch from './ToggleSwitch';
+import axios from 'axios';
 
 export default class Register extends React.Component {
     hideProduce = () =>{
@@ -12,6 +13,109 @@ export default class Register extends React.Component {
     goToRegister(){
       window.location.assign("/register");  
     };
+// logic for registering a new user
+registration = (event) =>{
+    event.preventDefault();
+
+    const {userName, knownAs, gender, organic, time, dateOfBirth, city, email, password, confirmPassword } = document.getElementById("registerForm");
+    console.log( gender.value, userName.value, knownAs.value, organic.value, email.value, password.value, confirmPassword.value );
+    console.log(time.value);
+    console.log(dateOfBirth.value, city.value);
+
+    const tomatoes = document.getElementById("tomatoes").checked;
+    const cucumbers = document.getElementById("cucumbers").checked;
+    const sweetPeppers = document.getElementById("sweetPeppers").checked;
+    const beans = document.getElementById("beans").checked;
+    const peas = document.getElementById("peas").checked;
+    const carrots = document.getElementById("carrots").checked;
+    const squash = document.getElementById("squash").checked;
+    const lettuce = document.getElementById("lettuce").checked;
+    const watermelon= document.getElementById("watermelon").checked;
+    const onion = document.getElementById("onion").checked;
+    const sweetCorn = document.getElementById("sweetCorn").checked;
+    const cabbage = document.getElementById("cabbage").checked;
+    const potatoes = document.getElementById("potatoes").checked;
+    const radishes = document.getElementById("radishes").checked;
+    const mint = document.getElementById("mint").checked;
+    const basil = document.getElementById("basil").checked;
+    const cilantro = document.getElementById("cilantro").checked;
+    const beets = document.getElementById("beets").checked;
+    const zucchini = document.getElementById("zucchini").checked;
+    const broccoli = document.getElementById("broccoli").checked;
+    const hasGarden = document.getElementById("yes-garden").checked;
+
+    console.log(tomatoes, cucumbers, sweetCorn, beans, peas, carrots, lettuce, watermelon, onion, mint, basil);
+    console.log(hasGarden);
+    if (password.value === confirmPassword.value){
+        console.log('passwords match, time to register.');
+        if(userName.value && password.value && email.value && knownAs.value && city.value && gender.value && organic.value && time.value && dateOfBirth.value) {
+            console.log('everything else matches, performing axios request');
+            const userData = {
+                firstName:userName.value,
+                lastName: knownAs.value,
+                email: email.value,
+                location: city.value,
+                geocode: 'tbd',
+                password: password.value,
+                image: 'tbd',
+                avatar: 'tbd',
+                intro: 'currently blank',
+                hasGarden: hasGarden,
+                availableTime: time.value,
+                organic: organic.value,
+                flowers: true,
+                tomatoes: tomatoes,
+                cucumbers: cucumbers,
+                sweetPeppers: sweetPeppers,
+                beans: beans,
+                peas: peas,
+                carrots: carrots,
+                squash: squash,
+                lettuce: lettuce,
+                watermelon: watermelon,
+                onion: onion,
+                sweetCorn: sweetCorn,
+                cabbage: cabbage,
+                potatoes: potatoes,
+                radishes: radishes,
+                mint: mint,
+                basil: basil,
+                cilantro: cilantro,
+                beets: beets,
+                zucchini: zucchini,
+                broccoli: broccoli,
+                other: false
+            }
+            console.log(userData);
+            let route;
+            if(window.location.href.includes('local')){
+                 route = "http://localhost:3001/api/userProfiles"
+            } else {
+               route = "/api/userProfiles";
+            }
+            axios.post(route, userData)
+            .then(function(res){
+                console.log(res);
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+             
+        } else {
+            alert('Whoops! Please make sure you have filled out all the fields.');
+        }
+
+    } else {
+        password.value = "";
+        confirmPassword.value = "";
+        alert("passwords did not match");
+    }
+
+
+
+}
+
+
     render(){
         return(
             <div id="info-box" className="register ltpink-bkg">
@@ -19,15 +123,15 @@ export default class Register extends React.Component {
                 <form id="registerForm">
                     <hr />
                     <div className="form-group row">
-                        <label htmlFor="firstName" className="col-sm-3">What is your first name?</label>
+                        <label htmlFor="userName" className="col-sm-3">What is your first name?</label>
                         <div className="col-sm-9">
-                            <input type="text" className="form-control" name="firstName" placeholder="First Name" />
+                            <input type="text" className="form-control" name="userName" placeholder="First Name" />
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label htmlFor="lastName" className="col-sm-3">What is your last name?</label>
+                        <label htmlFor="knownAs" className="col-sm-3">What is your last name?</label>
                         <div className="col-sm-9">
-                            <input className="form-control" placeholder="Last Name" name="lastName" />
+                            <input className="form-control" placeholder="Last Name" name="knownAs" />
                         </div>
                     </div>
                     <div className="form-group">
@@ -40,6 +144,9 @@ export default class Register extends React.Component {
                             </label>
                             <label className="radio-inline ml-3">
                             <input className="mr-3" type="radio" value="non-binary" name="gender" />Non-Binary
+                            </label>
+                            <label className="radio-inline ml-3">
+                            <input className="mr-3" type="radio" value="not-given" name="gender" />Prefer not to say
                             </label>
                     </div>
                     <div className="form-group">
@@ -58,84 +165,84 @@ export default class Register extends React.Component {
                                 <p>What types of produce?</p> 
                                 <div className="choices types-of-produce">
                                     <label className="radio-inline">
-                                    <input className="mr-3" type="checkbox" name="tomatoes" />Tomatoes
+                                    <input className="mr-3" type="checkbox" name="tomatoes" id="tomatoes" />Tomatoes
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="cucumbers" />Cucumbers
+                                    <input className="mr-3" type="checkbox" name="cucumbers" id="cucumbers" />Cucumbers
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="sweet-peppers" />Sweet Peppers
+                                    <input className="mr-3" type="checkbox" name="sweet-peppers" id="sweetPeppers" />Sweet Peppers
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="beans" />Beans
+                                    <input className="mr-3" type="checkbox" name="beans" id="beans"  />Beans
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="peas" />Peas
+                                    <input className="mr-3" type="checkbox" name="peas" id="peas" />Peas
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="carrots" />Carrots
+                                    <input className="mr-3" type="checkbox" name="carrots" id="carrots" />Carrots
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="squash" />Squash
+                                    <input className="mr-3" type="checkbox" name="squash" id="squash" />Squash
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="lettuce" />Lettuce
+                                    <input className="mr-3" type="checkbox" name="lettuce" id="lettuce" />Lettuce
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="broccoli" />Broccoli
+                                    <input className="mr-3" type="checkbox" name="broccoli" id="broccoli" />Broccoli
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="watermelon" />Watermelon
+                                    <input className="mr-3" type="checkbox" name="watermelon" id="watermelon" />Watermelon
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="onion" />Onion
+                                    <input className="mr-3" type="checkbox" name="onion" id="onion" />Onion
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="sweet-corn" />Sweet Corn
+                                    <input className="mr-3" type="checkbox" name="sweet-corn" id="sweetCorn" />Sweet Corn
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="cabbage" />Cabbage
+                                    <input className="mr-3" type="checkbox" name="cabbage" id="cabbage" />Cabbage
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="potatoes" />Potatoes
+                                    <input className="mr-3" type="checkbox" name="potatoes" id="potatoes" />Potatoes
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="radishes" />Radishes
+                                    <input className="mr-3" type="checkbox" name="radishes" id="radishes" />Radishes
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="mint" />Mint
+                                    <input className="mr-3" type="checkbox" name="mint" id="mint" />Mint
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="basil" />Basil
+                                    <input className="mr-3" type="checkbox" name="basil" id="basil" />Basil
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="cilantro" />Ciliantro
+                                    <input className="mr-3" type="checkbox" name="cilantro" id="cilantro" />Ciliantro
                                     </label>
 
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="beets" />Beets
+                                    <input className="mr-3" type="checkbox" name="beets" id="beets" />Beets
                                     </label>
 
                                     <label className="radio-inline ml-3">
-                                    <input className="mr-3" type="checkbox" name="zucchini" />Zucchini
+                                    <input className="mr-3" type="checkbox" name="zucchini" id="zucchini" />Zucchini
                                     </label>
                                 
                                 </div>
@@ -147,10 +254,10 @@ export default class Register extends React.Component {
                     <div className="form-group">
                         <label className="control-label twenty">Do you have a garden?</label>
                         <label className="radio-inline">
-                        <input className="mr-3" type="radio" name="garden?" />Yes
+                        <input className="mr-3" type="radio" value="true" name="garden-having" id="yes-garden" />Yes
                         </label>
                         <label className="radio-inline ml-3">
-                        <input className="mr-3" type="radio" name="garden?" />No
+                        <input className="mr-3" type="radio" value="false" name="garden-having" id="no-garden" />No
                         </label>
                     </div>
 
@@ -167,7 +274,7 @@ export default class Register extends React.Component {
                     <div className="form-group row">
                         <label htmlFor="time" className="col-sm-3">Available Hours</label>
                         <div className="col-sm-9">
-                            <input className="form-control" placeholder="Avg available times per week" name="time" />
+                            <input className="form-control" type="number" placeholder="Avg available times per week" name="time" />
                         </div>
                     </div>
 
@@ -209,7 +316,7 @@ export default class Register extends React.Component {
                     <ToggleSwitch />
                         
                     <div className="form-group text-center">
-                        <button className="btn btn-success mr-2" type="submit">Register<i className="fa fa-spinner fa-spin"></i></button>
+                        <button className="btn btn-success mr-2" id="register" type="submit">Register<i className="fa fa-spinner fa-spin"></i></button>
                         <button className="btn btn-danger" type="button">Cancel</button>
                     </div>
     
