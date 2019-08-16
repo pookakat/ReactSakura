@@ -10,8 +10,10 @@ export default class AboutUs extends React.Component {
             <div id="info-box" className="about-us ltpink-bkg">
                 <h2>Find your plant mate</h2>
                 <p className="lead">Come on in and start planting... All you need to do is sign up!</p>
-                <div className="text-center">
-                    <button className="btn btn-primary btn-lg mr-2" onClick={this.goToRegister}>Register</button>
+                <div>
+                    <button className="btn btn-lg mr-2 register-button" onClick={this.goToRegister}>Register</button>
+                </div>
+                <div>
                     <h3>About Us:</h3>
                     <p className="lead">We looked around for a way to make technology bring people together, while doing something good for the world, and came upon this. Many people have an inclination to garden, but are frustrated at the lack of available space to do so. As urbanization continues to increase the percentage of the population that live in apartments and other small-unit structures, it will become ever more important to find spaces in which to garden. Sakura aims to provide a partial solution to this problem: we cannot create the space for you, but we can link those who want to garden to those who simply don’t have the time, or energy to manage a garden. Instead of letting those plots turn to weeds, why not grow wonderful produce?</p>
                     <h3> Disclaimer/Privacy statement:</h3>
