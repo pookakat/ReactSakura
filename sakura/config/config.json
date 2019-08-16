@@ -2,14 +2,14 @@
     "development": {
       "username": "root",
       "password": "25064c001023818v",
-      "database": "garden_db",
+      "database": "gardening_db",
       "host": "localhost",
       "dialect": "mysql"
     },
     "test": {
       "username": "root",
       "password": null,
-      "database": "garden_db",
+      "database": "gardening_db",
       "host": "localhost",
       "dialect": "mysql",
       "logging": false

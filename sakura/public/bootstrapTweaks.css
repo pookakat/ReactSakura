@@ -4,6 +4,38 @@
 .dkpink-txt{
     color: rgb(235, 49, 179);
 }
+h2{
+    color: green;
+}
+h3{
+    color: green;
+}
+.register-button{
+    font-size: 20px;
+    margin: 20px;
+    box-shadow:inset 0px 1px 0px 0px #cf866c;   
+    background:linear-gradient(to bottom, #f2b6cc 5%, #eb31b3 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2b6cc', endColorstr='#eb31b3',GradientType=0);
+    background-color:#f2b6cc;
+    border-radius:8px;
+    border:1px solid #942911;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #854629;
+}
+.register-button:hover {
+    background:linear-gradient(to bottom, #eb31b3 5%, #f2b6cc 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eb31b3', endColorstr='#f2b6cc',GradientType=0);
+    background-color:#eb31b3;
+}
+.register-button:active {
+    position:relative;
+    top:1px;
+}
 .ltpink-bkg{
     background-color: #F2B6CC
 }
@@ -42,20 +74,11 @@
     margin-right: 5%;
     padding: 20px;
 }
-.ten{
-    margin-right: 10%;
-}
-.plants{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: auto;
-}
-.plants-title{
+.twenty{
     width: 20%;
 }
-.types-of-plants{
-    width: 80%;
+.produce{
+    display: none;
 }
 .other-plants{
     width: 50%;

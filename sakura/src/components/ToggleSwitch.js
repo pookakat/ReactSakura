@@ -30,7 +30,6 @@ export default class ToggleSwitch extends React.Component {
     };
     
     render(){
-        console.log(this.state);
         return(
             <div className="toggle-switch form-group row">
                 <label htmlFor="themeToggle">

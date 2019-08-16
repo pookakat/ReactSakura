@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS Gardening_db;
-CREATE DATABASE Gardening_db;
+DROP DATABASE IF EXISTS gardening_db;
+CREATE DATABASE gardening_db;
