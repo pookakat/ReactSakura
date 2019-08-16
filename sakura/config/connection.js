@@ -4,7 +4,7 @@ const jawsdb = process.env.JAWSDB_URL;
 if (jawsdb) {
   var sequelize = new Sequelize(jawsdb);
 } else {
-  var sequelize = new Sequelize("gardening_db", "root", "password", {
+  var sequelize = new Sequelize("gardening_db", "root", "25064c001023818v", {
     host: "localhost",
     dialect: "mysql",
     port: 3306,
