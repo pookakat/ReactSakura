@@ -140,6 +140,12 @@ app.post("/api/connections",(req, res)=>{
             return res.json(result);
         })
     });
+    app.get("/api/all", (request, response)=> {
+         UserProfiles.findAll({
+         }).then((result)=>{
+             return response.json(result);
+         })
+     });
 
     //creating a new user. on the clientside JS we need to have a way to save the current user for future queries (after logging in, we need userauth persistence.)
     app.post("/api/user-profiles/newUser", (req, res)=>{
