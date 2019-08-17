@@ -89,9 +89,9 @@ registration = (event) =>{
             console.log(userData);
             let route;
             if(window.location.href.includes('local')){
-                 route = "http://localhost:3001/api/userProfiles"
+                 route = "http://localHost:3001/api/user-profiles/newUser"
             } else {
-               route = "/api/userProfiles";
+               route = "/api/user-profiles/newUser";
             }
             axios.post(route, {
                 headers: "ACCEPT",
@@ -288,7 +288,7 @@ registration = (event) =>{
                     <div className="form-group row">
                         <label htmlFor="dateOfBirth" className="col-sm-3">Date of Birth</label>
                         <div className="col-sm-9">
-                            <input className="form-control" placeholder="Date of Birth" name="dateOfBirth" type="date" />
+                            <input className="form-control" placeholder="Date of Birth" id="dateOfBirth"    name="dateOfBirth" type="date" />
                         </div>
                     </div>
 
