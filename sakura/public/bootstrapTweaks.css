@@ -88,6 +88,15 @@ h3{
     flex-direction: row;
     justify-content: space-between;
 }
+.warning{
+    color: red;
+    text-align: right;
+    font-size: 10px;
+    width: 100%;
+}
+#not-unique{
+    display: none;
+}
 .onoffswitch {
     margin-left: 50px;
     position: relative; width: 90px;
