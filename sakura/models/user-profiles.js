@@ -31,6 +31,10 @@ const UserProfiles = sequelize.define('UserProfiles',{
         allowNull: false
 
     },
+    gender:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
     geocode: {
         type: Sequelize.STRING
 
@@ -195,6 +199,7 @@ UserProfiles.sync().then(()=>{
         userName: 'bobpaulson',
         firstName:'robert',
         lastName: 'paulson',
+        gender: 'male',
         email: 'rpaulson@gmail.com',
         location: 'durham',
         geocode: '23-58-23-192',
@@ -232,6 +237,7 @@ UserProfiles.sync().then(()=>{
         userName: 'whalegurl',
         firstName:'marge',
         lastName: 'beluga',
+        gender: 'female',
         email: 'beluga@gmail.com',
         location: 'raleigh',
         geocode: '23-57-23-192',
@@ -269,6 +275,7 @@ UserProfiles.sync().then(()=>{
         userName: 'strangerdanger',
         firstName:'random',
         lastName: 'stranger',
+        gender: 'non-binary',
         email: 'ihadbugsforlunch@gmail.com',
         location: 'chapel hill',
         geocode: '23-57-23-192',
