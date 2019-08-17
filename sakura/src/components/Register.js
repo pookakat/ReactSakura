@@ -4,6 +4,72 @@ import ToggleSwitch from './ToggleSwitch';
 import axios from 'axios';
 
 export default class Register extends React.Component {
+    checkUser = () => {
+        const user = document.getElementById("userName").value;
+        console.log(user);
+        let route;
+          if(window.location.href.includes('local')){
+                route = "http://localHost:3001/api/check-user"
+          } else {
+              route = "/api/check-user";
+          }
+          console.log(route);
+          axios.get(route, {
+            method: 'GET',
+          
+            //  {
+            //     "Access-Control-Request-Method": "POST",
+            //     "Content-Type": "application/json"
+            // },
+            params:{
+              userName: user
+            }
+        })
+        .then(function(res){
+            console.log(res.data);
+            if (res.data.length !== 0){
+                document.getElementById("not-unique").style.display="block";
+                }
+            else{
+                document.getElementById("not-unique").style.display="none";
+            }
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    };
+    checkUser2 = () => {
+        const user = document.getElementById("userName").value;
+        console.log(user);
+        let route;
+          if(window.location.href.includes('local')){
+                route = "http://localHost:3001/api/check-user"
+          } else {
+              route = "/api/check-user";
+          }
+          console.log(route);
+          axios.get(route, {
+            method: 'GET',
+          
+            //  {
+            //     "Access-Control-Request-Method": "POST",
+            //     "Content-Type": "application/json"
+            // },
+            params:{
+              userName: user
+            }
+        })
+        .then(function(res){
+            console.log(res.data);
+            if (res.data.length !== 0){
+                document.getElementById("userName").value=null;
+                alert('Please pick a different user name.');
+                }
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    };
     hideProduce = () =>{
         document.getElementById('produceChoices').style.display="none";
     };
@@ -15,9 +81,17 @@ export default class Register extends React.Component {
     };
 // logic for registering a new user
 registration = (event) =>{
+    
     event.preventDefault();
 
+    const uniqueUserName = document.getElementById('not-unique').style.display;
+
     const {userName, firstName, knownAs, gender, organic, time, dateOfBirth, city, email, password, confirmPassword } = document.getElementById("registerForm");
+
+    if (uniqueUserName !== 'none'){
+        userName.value = null;
+    }
+
     console.log( gender.value, userName.value, firstName.value, knownAs.value, organic.value, email.value, password.value, confirmPassword.value );
     console.log(time.value);
     console.log(dateOfBirth.value, city.value);
@@ -133,8 +207,9 @@ registration = (event) =>{
                     <div className="form-group row">
                         <label htmlFor="userName" className="col-sm-3">Please pick a unique user name</label>
                         <div className="col-sm-9">
-                            <input type="text" className="form-control" id="userName" name="userName" placeholder="User Name" />
+                            <input type="text" className="form-control" id="userName" name="userName" placeholder="User Name" onChange={this.checkUser} onBlur={this.checkUser2}/>
                         </div>
+                        <div className="warning" id="not-unique">This user name is not unique. Please pick another.</div>
                     </div>
                     <div className="form-group row">
                         <label htmlFor="firstName" className="col-sm-3">What is your first name?</label>
@@ -330,7 +405,7 @@ registration = (event) =>{
                     <ToggleSwitch />
                         
                     <div className="form-group text-center">
-                        <button className="btn btn-success mr-2" id="register" onClick={this.registration} type="submit">Register<i className="fa fa-spinner fa-spin"></i></button>
+                        <button className="btn btn-success mr-2" id="register" onClick={this.registration} type="submit" >Register<i className="fa fa-spinner fa-spin"></i></button>
                         <button className="btn btn-danger" type="button">Cancel</button>
                     </div>
     

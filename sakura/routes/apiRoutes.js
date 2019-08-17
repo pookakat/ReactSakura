@@ -6,8 +6,6 @@ module.exports = function(app) {
 
     app.get("/api/login", (req, res) => {
         const {user} = req.params;
-        console.log('Checking Login');
-        console.log(req);
         UserProfiles.findAll({
             where: {
                 userName: req.query.uName,
@@ -18,12 +16,23 @@ module.exports = function(app) {
         })
     });
 
+    app.get("/api/check-user", (req, res) => {
+        const {user} = req.params;
+        UserProfiles.findAll({
+            where: {
+                userName: req.query.userName
+            }
+        }).then((result) => {
+            return res.json(result);
+        })
+    });
+
     //returning a single user's profile
     app.get("/api/user-profiles/:user", (req, res) => {
         const {user} = req.params;
         UserProfiles.findAll({
             where: {
-                id: user
+                userName: user
             }
         }).then((result)=>{
             return res.json(result);
