@@ -17,8 +17,8 @@ export default class Register extends React.Component {
 registration = (event) =>{
     event.preventDefault();
 
-    const {userName, knownAs, gender, organic, time, dateOfBirth, city, email, password, confirmPassword } = document.getElementById("registerForm");
-    console.log( gender.value, userName.value, knownAs.value, organic.value, email.value, password.value, confirmPassword.value );
+    const {userName, firstName, knownAs, gender, organic, time, dateOfBirth, city, email, password, confirmPassword } = document.getElementById("registerForm");
+    console.log( gender.value, userName.value, firstName.value, knownAs.value, organic.value, email.value, password.value, confirmPassword.value );
     console.log(time.value);
     console.log(dateOfBirth.value, city.value);
 
@@ -48,10 +48,11 @@ registration = (event) =>{
     console.log(hasGarden);
     if (password.value === confirmPassword.value){
         console.log('passwords match, time to register.');
-        if(userName.value && password.value && email.value && knownAs.value && city.value && gender.value && organic.value && time.value && dateOfBirth.value) {
+        if(userName.value && firstName.value && password.value && email.value && knownAs.value && city.value && gender.value && organic.value && time.value && dateOfBirth.value) {
             console.log('everything else matches, performing axios request');
             const userData = {
-                firstName:userName.value,
+                userName: userName.value,
+                firstName: firstName.value,
                 lastName: knownAs.value,
                 email: email.value,
                 location: city.value,
@@ -130,9 +131,15 @@ registration = (event) =>{
                 <form id="registerForm">
                     <hr />
                     <div className="form-group row">
-                        <label htmlFor="userName" className="col-sm-3">What is your first name?</label>
+                        <label htmlFor="userName" className="col-sm-3">Please pick a unique user name</label>
                         <div className="col-sm-9">
-                            <input type="text" className="form-control" name="userName" placeholder="First Name" />
+                            <input type="text" className="form-control" id="userName" name="userName" placeholder="User Name" />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <label htmlFor="firstName" className="col-sm-3">What is your first name?</label>
+                        <div className="col-sm-9">
+                            <input type="text" className="form-control" name="firstName" placeholder="First Name" />
                         </div>
                     </div>
                     <div className="form-group row">

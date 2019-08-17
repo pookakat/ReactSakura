@@ -2,6 +2,11 @@ const Sequelize = require("sequelize");
 const sequelize = require("../config/connection.js");
 
 const UserProfiles = sequelize.define('UserProfiles',{
+    userName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+
     firstName: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -187,6 +192,7 @@ const UserProfiles = sequelize.define('UserProfiles',{
 });
 UserProfiles.sync().then(()=>{
     UserProfiles.create({
+        userName: 'bobpaulson',
         firstName:'robert',
         lastName: 'paulson',
         email: 'rpaulson@gmail.com',
@@ -223,6 +229,7 @@ UserProfiles.sync().then(()=>{
         other: false
     })
     UserProfiles.create({
+        userName: 'whalegurl',
         firstName:'marge',
         lastName: 'beluga',
         email: 'beluga@gmail.com',
@@ -259,6 +266,7 @@ UserProfiles.sync().then(()=>{
         other: true
     })
     UserProfiles.create({
+        userName: 'strangerdanger',
         firstName:'random',
         lastName: 'stranger',
         email: 'ihadbugsforlunch@gmail.com',
