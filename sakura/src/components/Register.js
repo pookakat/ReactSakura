@@ -202,7 +202,7 @@ registration = (event) =>{
         return(
             <div id="info-box" className="register ltpink-bkg">
                 <h2 className="text-center">Sign Up</h2>
-                <form id="registerForm">
+                <form id="registerForm" onSubmit = {this.registration}>
                     <hr />
                     <div className="form-group row">
                         <label htmlFor="userName" className="col-sm-3">Please pick a unique user name</label>
@@ -405,7 +405,7 @@ registration = (event) =>{
                     <ToggleSwitch />
                         
                     <div className="form-group text-center">
-                        <button className="btn btn-success mr-2" id="register" onClick={this.registration} type="submit" >Register<i className="fa fa-spinner fa-spin"></i></button>
+                        <button className="btn btn-success mr-2" id="register" onClick={this.checkUser2} type="submit" >Register<i className="fa fa-spinner fa-spin"></i></button>
                         <button className="btn btn-danger" type="button">Cancel</button>
                     </div>
     
