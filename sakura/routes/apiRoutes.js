@@ -1,12 +1,25 @@
-const UserProfiles = require("../models/userprofiles");
+const UserProfiles = require("../models/user-profiles");
 const Messages = require("../models/messages");
 const Connections = require("../models/connections");
 
 module.exports = function(app) {
 
+    app.get("/api/login", (req, res) => {
+        const {user} = req.params;
+        console.log('Checking Login');
+        console.log(req);
+        UserProfiles.findAll({
+            where: {
+                firstName: req.query.userName,
+                password: req.query.password
+            }
+        }).then((result)=>{
+            return res.json(result);
+        })
+    });
 
     //returning a single user's profile
-    app.get("/api/userProfiles/:user", (req, res) => {
+    app.get("/api/user-profiles/:user", (req, res) => {
         const {user} = req.params;
         UserProfiles.findAll({
             where: {
@@ -120,8 +133,9 @@ app.post("/api/connections",(req, res)=>{
     });
 
     //creating a new user. on the clientside JS we need to have a way to save the current user for future queries (after logging in, we need userauth persistence.)
-    app.post("/api/userProfiles/newUser", (req, res)=>{
-const {firstName, lastName, email, location, geocode, password, image, avatar, intro, hasGarden, availableTime, organic, flowers, tomatoes, cucumbers, sweetPeppers, beans, peas, carrots, squash, lettuce, watermelon, onion, sweetCorn, cabbage, potatoes, radishes, mint, basil, cilantro, beets, zucchini, broccoli, other} = req.body;
+    app.post("/api/user-profiles/newUser", (req, res)=>{
+        console.log(req.body);
+const {firstName, lastName, email, location, geocode, password, image, avatar, intro, hasGarden, availableTime, organic, flowers, tomatoes, cucumbers, sweetPeppers, beans, peas, carrots, squash, lettuce, watermelon, onion, sweetCorn, cabbage, potatoes, radishes, mint, basil, cilantro, beets, zucchini, broccoli, other} = req.body.body.userData;
 UserProfiles.create({
     firstName:firstName,
     lastName: lastName,
@@ -167,7 +181,7 @@ UserProfiles.create({
     })
 
 //updating a user's profile
-app.put("/api/userProfiles/:user", (req, res)=>{
+app.put("/api/user-profiles/:user", (req, res)=>{
     UserProfiles.update(req.body,{
         where: {
             id: req.params.id
@@ -178,7 +192,7 @@ app.put("/api/userProfiles/:user", (req, res)=>{
 })
 
 //deleting a user's profile:
-app.delete("/api/userProfiles/:user", (req, res)=>{
+app.delete("/api/user-profiles/:user", (req, res)=>{
     UserProfiles.destroy(req.body, {
         where:{
             id: req.params.id
