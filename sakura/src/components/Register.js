@@ -6,6 +6,7 @@ import axios from 'axios';
 export default class Register extends React.Component {
     checkUser = () => {
         const user = document.getElementById("userName").value;
+        if (user.length > 2){
         console.log(user);
         let route;
           if(window.location.href.includes('local')){
@@ -37,10 +38,14 @@ export default class Register extends React.Component {
         .catch(function(err){
             console.log(err);
         });
-    };
+    }};
     checkUser2 = () => {
         const user = document.getElementById("userName").value;
-        console.log(user);
+        if (user.length <= 2){
+            document.getElementById("userName").value=null;
+            alert('User names must be 3 or more characters. Please pick another name');
+        }
+        else{
         let route;
           if(window.location.href.includes('local')){
                 route = "http://localHost:3001/api/check-user"
@@ -69,7 +74,7 @@ export default class Register extends React.Component {
         .catch(function(err){
             console.log(err);
         });
-    };
+    }};
     hideProduce = () =>{
         document.getElementById('produceChoices').style.display="none";
     };
