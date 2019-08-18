@@ -41,6 +41,8 @@ h3{
 }
 .pink-theme{
     background-image: url('./assets/bg.png');
+    background-size: inherit;
+    background-repeat: no-repeat;
 }
 .green-theme{
     background-image: url('./assets/japanese_bamboo_forest.jpg');

@@ -96,6 +96,7 @@ registration = (event) =>{
     console.log(time.value);
     console.log(dateOfBirth.value, city.value);
 
+    const flowers = document.getElementById("flowers").checked || document.getElementById("both").checked;
     const tomatoes = document.getElementById("tomatoes").checked;
     const cucumbers = document.getElementById("cucumbers").checked;
     const sweetPeppers = document.getElementById("sweetPeppers").checked;
@@ -118,7 +119,7 @@ registration = (event) =>{
     const broccoli = document.getElementById("broccoli").checked;
     const hasGarden = document.getElementById("yes-garden").checked;
 
-    console.log(tomatoes, cucumbers, sweetCorn, beans, peas, carrots, lettuce, watermelon, onion, mint, basil);
+    console.log(flowers, tomatoes, cucumbers, sweetCorn, beans, peas, carrots, lettuce, watermelon, onion, mint, basil);
     console.log(hasGarden);
     if (password.value === confirmPassword.value){
         console.log('passwords match, time to register.');
@@ -138,7 +139,7 @@ registration = (event) =>{
                 hasGarden: hasGarden,
                 availableTime: time.value,
                 organic: organic.value,
-                flowers: true,
+                flowers: flowers,
                 tomatoes: tomatoes,
                 cucumbers: cucumbers,
                 sweetPeppers: sweetPeppers,
@@ -178,11 +179,13 @@ registration = (event) =>{
             })
             .then(function(res){
                 console.log(res);
+                window.localStorage.setItem('userID', res.data.userName);
+                window.location.assign("/loggedin"); 
             })
             .catch(function(err){
                 console.log(err);
             });
-             
+
         } else {
             alert('Whoops! Please make sure you have filled out all the fields.');
         }
@@ -192,7 +195,6 @@ registration = (event) =>{
         confirmPassword.value = "";
         alert("passwords did not match");
     }
-
 
 
 }
@@ -241,13 +243,13 @@ registration = (event) =>{
                     <div className="form-group">
                         <label className="control-label twenty">I like to Plant: </label>
                             <label className="radio-inline">
-                            <input className="mr-3" type="radio" name="plantPref" onClick={this.hideProduce}/>Flowers
+                            <input className="mr-3" type="radio" id = "flowers" name="plantPref" onClick={this.hideProduce}/>Flowers
                             </label>
                             <label className="radio-inline ml-3">
-                            <input className="mr-3" type="radio" name="plantPref" onClick={this.showProduce}/>Produce
+                            <input className="mr-3" type="radio" id = "produce" name="plantPref" onClick={this.showProduce}/>Produce
                             </label>
                             <label className="radio-inline ml-3">
-                            <input className="mr-3" type="radio" name="plantPref" onClick={this.showProduce}/>Both
+                            <input className="mr-3" type="radio" id = "both" name="plantPref" onClick={this.showProduce}/>Both
                             </label>
 
                             <div id="produceChoices" className="produce">
