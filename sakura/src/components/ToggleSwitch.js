@@ -2,6 +2,7 @@ import React from "react";
 
 export default class ToggleSwitch extends React.Component {
 
+
     state = {
         isToggled: false
     };
@@ -37,7 +38,7 @@ export default class ToggleSwitch extends React.Component {
                 <label htmlFor="themeToggle">
                     Dont like this theme? Try: </label>
                     <div className="onoffswitch">
-                        <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch" defaultChecked 
+                        <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch" defaultChecked  value="false"
                         onClick={this.toggleSwitch}/>
                         <label className="onoffswitch-label" htmlFor="myonoffswitch">
                             <span className="onoffswitch-inner"></span>

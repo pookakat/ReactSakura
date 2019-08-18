@@ -91,16 +91,17 @@ registration = (event) =>{
 
     const uniqueUserName = document.getElementById('not-unique').style.display;
 
-    const {userName, firstName, knownAs, gender, organic, time, dateOfBirth, city, email, password, confirmPassword, myonoffswitch } = document.getElementById("registerForm");
+    const {userName, firstName, knownAs, gender, time, dateOfBirth, city, email, password, confirmPassword, myonoffswitch } = document.getElementById("registerForm");
 
     if (uniqueUserName !== 'none'){
         userName.value = null;
     }
 
-    console.log( gender.value, userName.value, firstName.value, knownAs.value, organic.value, email.value, password.value, confirmPassword.value, myonoffswitch.value );
+    console.log( gender.value, userName.value, firstName.value, knownAs.value, email.value, password.value, confirmPassword.value, myonoffswitch.value );
     console.log(time.value);
     console.log(dateOfBirth.value, city.value);
 
+    const organic = document.getElementById("yes-organic").checked;
     const flowers = document.getElementById("flowers").checked || document.getElementById("both").checked;
     const tomatoes = document.getElementById("tomatoes").checked;
     const cucumbers = document.getElementById("cucumbers").checked;
@@ -124,87 +125,94 @@ registration = (event) =>{
     const broccoli = document.getElementById("broccoli").checked;
     const hasGarden = document.getElementById("yes-garden").checked;
 
-    console.log(flowers, tomatoes, cucumbers, sweetCorn, beans, peas, carrots, lettuce, watermelon, onion, mint, basil);
-    console.log(hasGarden);
-    if (password.value === confirmPassword.value){
-        console.log('passwords match, time to register.');
-        if(userName.value && firstName.value && password.value && email.value && knownAs.value && city.value && gender.value && organic.value && time.value && dateOfBirth.value) {
-            console.log('everything else matches, performing axios request');
-            const userData = {
-                userName: userName.value,
-                firstName: firstName.value,
-                lastName: knownAs.value,
-                email: email.value,
-                location: city.value,
-                geocode: 'tbd',
-                password: password.value,
-                image: 'tbd',
-                avatar: 'tbd',
-                intro: 'currently blank',
-                hasGarden: hasGarden,
-                availableTime: time.value,
-                organic: organic.value,
-                flowers: flowers,
-                tomatoes: tomatoes,
-                cucumbers: cucumbers,
-                sweetPeppers: sweetPeppers,
-                beans: beans,
-                peas: peas,
-                carrots: carrots,
-                squash: squash,
-                lettuce: lettuce,
-                watermelon: watermelon,
-                onion: onion,
-                sweetCorn: sweetCorn,
-                cabbage: cabbage,
-                potatoes: potatoes,
-                radishes: radishes,
-                mint: mint,
-                basil: basil,
-                cilantro: cilantro,
-                beets: beets,
-                zucchini: zucchini,
-                broccoli: broccoli,
-                other: false,
-                theme: myonoffswitch.value
-            }
-            console.log(userData);
-            let route;
-            if(window.location.href.includes('local')){
-                 route = "http://localHost:3001/api/user-profiles/newUser"
-            } else {
-               route = "/api/user-profiles/newUser";
-            }
-            axios.post(route, {
-                headers: "ACCEPT",
-                //  {
-                //     "Access-Control-Request-Method": "POST",
-                //     "Content-Type": "application/json"
-                // },
-                body:{userData} 
-            })
-            .then(function(res){
-                console.log(res);
-                window.localStorage.setItem('userID', res.data.userName);
-                window.location.assign("/loggedin"); 
-            })
-            .catch(function(err){
-                console.log(err);
-            });
-
-        } else {
-            alert('Whoops! Please make sure you have filled out all the fields.');
+    console.log('Grows Values', flowers, tomatoes, cucumbers, sweetCorn, beans, peas, carrots, lettuce, watermelon, onion, mint, basil);
+    console.log('Has Garden?', hasGarden);
+    console.log('Is organic?', organic);
+    if(userName.value && firstName.value && password.value && email.value && knownAs.value && city.value && gender.value && time.value && dateOfBirth.value) {
+        console.log('everything else matches, performing axios request');
+        const userData = {
+            userName: userName.value,
+            firstName: firstName.value,
+            lastName: knownAs.value,
+            email: email.value,
+            location: city.value,
+            geocode: 'tbd',
+            password: password.value,
+            image: 'tbd',
+            avatar: 'tbd',
+            intro: 'currently blank',
+            hasGarden: hasGarden,
+            availableTime: time.value,
+            organic: organic,
+            flowers: flowers,
+            tomatoes: tomatoes,
+            cucumbers: cucumbers,
+            sweetPeppers: sweetPeppers,
+            beans: beans,
+            peas: peas,
+            carrots: carrots,
+            squash: squash,
+            lettuce: lettuce,
+            watermelon: watermelon,
+            onion: onion,
+            sweetCorn: sweetCorn,
+            cabbage: cabbage,
+            potatoes: potatoes,
+            radishes: radishes,
+            mint: mint,
+            basil: basil,
+            cilantro: cilantro,
+            beets: beets,
+            zucchini: zucchini,
+            broccoli: broccoli,
+            other: false,
+            theme: myonoffswitch.value
         }
-
-    } else {
-        password.value = "";
-        confirmPassword.value = "";
-        alert("passwords did not match");
+        const userPass=password.value;
+        if (userPass.length >= 8){
+            console.log("Password passes length check");
+            if (password.value === confirmPassword.value){
+                console.log('passwords match, time to register.');
+                let route;
+                if(window.location.href.includes('local')){
+                        route = "http://localHost:3001/api/user-profiles/newUser"
+                } else {
+                    route = "/api/user-profiles/newUser";
+                }
+                axios.post(route, {
+                    headers: "ACCEPT",
+                    //  {
+                    //     "Access-Control-Request-Method": "POST",
+                    //     "Content-Type": "application/json"
+                    // },
+                    body:{userData} 
+                })
+                .then(function(res){
+                    console.log(res);
+                    window.localStorage.setItem('userID', res.data.userName);
+                    window.location.assign("/loggedin"); 
+                })
+                .catch(function(err){
+                    console.log(err);
+                });
+            }
+            else{
+                alert('Passwords must match. Please try again');
+                password.value = "";
+                confirmPassword.value = "";
+            }
+        }
+        else{
+            alert('Passwords must be 8 characters or longer for your safety. Please pick another');
+            password.value = "";
+            confirmPassword.value = "";
+        }
+    }
+    else {
+        alert('Whoops! Please make sure you have filled out all the fields.');
     }
 
-
-}
-
+}; 
 
     render(){
         return(
@@ -361,7 +369,7 @@ registration = (event) =>{
                     <div className="form-group">
                         <label className="control-label twenty">Organic Produce?</label>
                         <label className="radio-inline">
-                        <input className="mr-3" type="radio" name="organic" value="true" />Yes
+                        <input className="mr-3" type="radio" name="organic" id="yes-organic" />Yes
                         </label>
                         <label className="radio-inline ml-3">
                         <input className="mr-3" type="radio" name="organic" value="false"/>No
