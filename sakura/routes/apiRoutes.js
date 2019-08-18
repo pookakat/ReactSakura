@@ -144,7 +144,7 @@ app.post("/api/connections",(req, res)=>{
     //creating a new user. on the clientside JS we need to have a way to save the current user for future queries (after logging in, we need userauth persistence.)
     app.post("/api/user-profiles/newUser", (req, res)=>{
         console.log(req.body);
-const {userName, firstName, lastName, email, location, geocode, password, image, avatar, intro, hasGarden, availableTime, organic, flowers, tomatoes, cucumbers, sweetPeppers, beans, peas, carrots, squash, lettuce, watermelon, onion, sweetCorn, cabbage, potatoes, radishes, mint, basil, cilantro, beets, zucchini, broccoli, other} = req.body.body.userData;
+const {userName, firstName, lastName, email, location, geocode, password, image, avatar, intro, hasGarden, availableTime, organic, flowers, tomatoes, cucumbers, sweetPeppers, beans, peas, carrots, squash, lettuce, watermelon, onion, sweetCorn, cabbage, potatoes, radishes, mint, basil, cilantro, beets, zucchini, broccoli, other, theme} = req.body.body.userData;
 UserProfiles.create({
     userName: userName,
     firstName: firstName,
@@ -180,7 +180,8 @@ UserProfiles.create({
     beets: beets,
     zucchini: zucchini,
     broccoli: broccoli,
-    other: other
+    other: other,
+    theme: theme
 },
 {
     timestamps: false,

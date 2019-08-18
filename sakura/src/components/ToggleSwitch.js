@@ -18,6 +18,7 @@ export default class ToggleSwitch extends React.Component {
             document.body.classList.add("green-theme");
             document.getElementById('info-box').classList.remove("ltpink-bkg");
             document.getElementById('info-box').classList.add("ltgreen-bkg");
+            document.getElementById("myonoffswitch").setAttribute('value', true);
         }
         else{
             document.getElementById('main-nav').classList.remove("dkgreen-bkg");
@@ -26,6 +27,7 @@ export default class ToggleSwitch extends React.Component {
             document.body.classList.add("pink-theme");
             document.getElementById('info-box').classList.remove("ltgreen-bkg");
             document.getElementById('info-box').classList.add("ltpink-bkg");
+            document.getElementById("myonoffswitch").setAttribute('value', false);
         }
     };
     

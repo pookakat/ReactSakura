@@ -185,6 +185,11 @@ const UserProfiles = sequelize.define('UserProfiles',{
         type: Sequelize.BOOLEAN,
         defaultValue: true
 
+    },
+    theme:{
+        //this detects whether we are going on the forest or the flower theme. The default is false as the assumption is that the flower is our default and changing that is 'picking a new theme'
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
     }
 
 },{
@@ -226,7 +231,8 @@ UserProfiles.sync().then(()=>{
         beets: false,
         zucchini: false,
         broccoli: false,
-        other: false
+        other: false,
+        theme: true
     })
     UserProfiles.create({
         userName: 'whalegurl',
@@ -263,7 +269,8 @@ UserProfiles.sync().then(()=>{
         beets: true,
         zucchini: true,
         broccoli: true,
-        other: true
+        other: true,
+        theme: false
     })
     UserProfiles.create({
         userName: 'strangerdanger',
@@ -300,7 +307,8 @@ UserProfiles.sync().then(()=>{
         beets: true,
         zucchini: true,
         broccoli: true,
-        other: true
+        other: true,
+        theme: true
     })
 });
 

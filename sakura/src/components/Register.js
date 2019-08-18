@@ -86,13 +86,13 @@ registration = (event) =>{
 
     const uniqueUserName = document.getElementById('not-unique').style.display;
 
-    const {userName, firstName, knownAs, gender, organic, time, dateOfBirth, city, email, password, confirmPassword } = document.getElementById("registerForm");
+    const {userName, firstName, knownAs, gender, organic, time, dateOfBirth, city, email, password, confirmPassword, myonoffswitch } = document.getElementById("registerForm");
 
     if (uniqueUserName !== 'none'){
         userName.value = null;
     }
 
-    console.log( gender.value, userName.value, firstName.value, knownAs.value, organic.value, email.value, password.value, confirmPassword.value );
+    console.log( gender.value, userName.value, firstName.value, knownAs.value, organic.value, email.value, password.value, confirmPassword.value, myonoffswitch.value );
     console.log(time.value);
     console.log(dateOfBirth.value, city.value);
 
@@ -160,7 +160,8 @@ registration = (event) =>{
                 beets: beets,
                 zucchini: zucchini,
                 broccoli: broccoli,
-                other: false
+                other: false,
+                theme: myonoffswitch.value
             }
             console.log(userData);
             let route;
