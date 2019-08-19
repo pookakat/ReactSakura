@@ -137,3 +137,11 @@ h3{
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px; 
 }
+#user-details{
+    list-style: none;
+}
+#choices{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}

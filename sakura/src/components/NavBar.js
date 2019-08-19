@@ -29,7 +29,8 @@ export default class NavBar extends React.Component {
         })
         .then(function(res){
             console.log(res);
-            window.localStorage.setItem('userID', res.data[0].id);
+            const userName = res.data[0].userName;
+            window.localStorage.setItem('userName', userName);
             window.location.assign("/loggedin"); 
         })
         .catch(function(err){
@@ -53,3 +54,4 @@ export default class NavBar extends React.Component {
         );
     }
 }
+
