@@ -1,5 +1,6 @@
 import React from "react";
-import MatchWrapper from './matchWrapper/matchWrapper';
+import UserPageShell from './UserPageShell';
+
 
 export default class LoggedIn extends React.Component {
     goToRegister(){
@@ -10,13 +11,15 @@ export default class LoggedIn extends React.Component {
     render(){
         return(
             <div id="info-box" className="about-us ltpink-bkg">
-                <h2>Log In Successful!</h2>
-                <p className="lead">Welcome to your Sakura Profile</p>
-
-
-                <p> Potential matches:</p>
-                <MatchWrapper></MatchWrapper>
+                <h2>Welcome <span id="userName"></span>!</h2>
+                <UserPageShell />
             </div>
         );
-    }
+    };
+    componentDidMount(){
+        const currentUser = window.localStorage.getItem('userName')
+        console.log('hi?');
+        console.log(window.localStorage.getItem('userName'));
+        document.getElementById('userName').textContent = currentUser;
+    };
 }

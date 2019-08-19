@@ -2,6 +2,7 @@ import React from "react";
 
 export default class ToggleSwitch extends React.Component {
 
+
     state = {
         isToggled: false
     };
@@ -18,6 +19,7 @@ export default class ToggleSwitch extends React.Component {
             document.body.classList.add("green-theme");
             document.getElementById('info-box').classList.remove("ltpink-bkg");
             document.getElementById('info-box').classList.add("ltgreen-bkg");
+            document.getElementById("myonoffswitch").setAttribute('value', true);
         }
         else{
             document.getElementById('main-nav').classList.remove("dkgreen-bkg");
@@ -26,6 +28,7 @@ export default class ToggleSwitch extends React.Component {
             document.body.classList.add("pink-theme");
             document.getElementById('info-box').classList.remove("ltgreen-bkg");
             document.getElementById('info-box').classList.add("ltpink-bkg");
+            document.getElementById("myonoffswitch").setAttribute('value', false);
         }
     };
     
@@ -35,7 +38,7 @@ export default class ToggleSwitch extends React.Component {
                 <label htmlFor="themeToggle">
                     Dont like this theme? Try: </label>
                     <div className="onoffswitch">
-                        <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch" defaultChecked 
+                        <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch" defaultChecked  value="false"
                         onClick={this.toggleSwitch}/>
                         <label className="onoffswitch-label" htmlFor="myonoffswitch">
                             <span className="onoffswitch-inner"></span>
