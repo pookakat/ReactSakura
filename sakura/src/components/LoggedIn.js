@@ -17,7 +17,7 @@ export default class LoggedIn extends React.Component {
         );
     };
     componentDidMount(){
-        const currentUser = window.localStorage.getItem('userName')
+        const currentUser = window.localStorage.getItem('userName');
         console.log('hi?');
         console.log(window.localStorage.getItem('userName'));
         document.getElementById('userName').textContent = currentUser;

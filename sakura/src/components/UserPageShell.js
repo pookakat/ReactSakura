@@ -15,8 +15,8 @@ function AppRouter() {
     return (
         <Router>
             <div>
-                <Route path="/loggedin" component={Index} />
-                <Route path="/loggedin/updateInfo" component = {UpdateRegisteredUser} />
+                <Route path="/loggedin/" exact component={Index} />
+                <Route path="/loggedin/updateInfo/" exact component={UpdateRegisteredUser} />
             </div>
         </Router>
     );

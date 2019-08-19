@@ -2,7 +2,9 @@ import React from "react";
 import axios from 'axios';
 
 export default class UserDetails extends React.Component {
-    
+    goToUpdate(){
+        window.location.assign("/loggedin/updateInfo/");  
+    };
     getUserInfo = () => {
         const state = Object.assign({}, this.state);
         let user = window.localStorage.getItem('userName');
@@ -69,8 +71,4 @@ export default class UserDetails extends React.Component {
     componentDidMount(){
         this.getUserInfo();    
     }
-    goToUpdate(){
-        window.location.assign("/loggedin/update");  
-    };
-
 };

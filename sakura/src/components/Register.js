@@ -173,6 +173,8 @@ registration = (event) =>{
             console.log("Password passes length check");
             if (password.value === confirmPassword.value){
                 console.log('passwords match, time to register.');
+                window.localStorage.setItem('userName', userData.userName);
+                console.log(window.localStorage.getItem('userName'));
                 let route;
                 if(window.location.href.includes('local')){
                         route = "http://localHost:3001/api/user-profiles/newUser"
@@ -189,7 +191,6 @@ registration = (event) =>{
                 })
                 .then(function(res){
                     console.log(res);
-                    window.localStorage.setItem('userID', res.data.userName);
                     window.location.assign("/loggedin"); 
                 })
                 .catch(function(err){
