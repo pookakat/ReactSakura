@@ -5,6 +5,9 @@ export default class UserDetails extends React.Component {
     goToUpdate(){
         window.location.assign("/loggedin/updateInfo/");  
     };
+    goToMatches(){
+        window.location.assign("/loggedin/findMatches/");  
+    };
     getUserInfo = () => {
         const state = Object.assign({}, this.state);
         let user = window.localStorage.getItem('userName');
