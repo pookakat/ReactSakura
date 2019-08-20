@@ -29,10 +29,13 @@ export default class NavBar extends React.Component {
             }
         })
         .then(function(res){
-            console.log(res);
+            console.log(res.data);
             const userName = res.data[0].userName;
+            console.log(userName);
             const theme = res.data[0].theme;
+            const userId = res.data[0].id;
             window.localStorage.setItem('userName', userName);
+            window.localStorage.setItem('userId', userId )
             window.localStorage.setItem('theme', theme);
             console.log(theme);
             window.location.assign("/loggedin"); 

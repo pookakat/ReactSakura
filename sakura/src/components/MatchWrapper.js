@@ -42,7 +42,9 @@ export default class MatchWrapper extends React.Component {
     render(){
         let matches = "";
         if (this.state.matches.length){ 
+            let userName = window.localStorage.getItem('userName');
             matches = this.state.matches.map(match=>(
+                match.userName === userName ? false :
             <MatchCard key= {match.id} id={match.id} userName={match.userName} distance = {'unknown distance'} gender = {match.gender} summary = {match.intro}></MatchCard>
             ));
         };
