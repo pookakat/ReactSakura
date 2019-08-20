@@ -46,6 +46,8 @@ h3{
 }
 .green-theme{
     background-image: url('./assets/japanese_bamboo_forest.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .navbar{
     display: flex;
@@ -144,4 +146,8 @@ h3{
     display: flex;
     justify-content: center;
     margin: 0 auto;
+}
+.match-load{
+    border: 1px solid pink;
+    border-radius: 2px;
 }

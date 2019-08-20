@@ -37,10 +37,17 @@ export default class UserDetails extends React.Component {
                     console.log(err);
                 });    
     };
+
     goToUpdate(){
         console.log('going');
         window.location.assign("/loggedin/update");  
-      };
+    };
+
+    goToDetails(){
+        console.log('going');
+        window.location.assign("/loggedin/");  
+    };
+
     render(){
         return(
             <div id="user-details" className="register" onLoad={this.getUserInfo}>
@@ -235,7 +242,7 @@ export default class UserDetails extends React.Component {
                         
                     <div className="form-group text-center">
                         <button className="btn btn-success mr-2" id="register" onClick={this.checkUser2} type="submit" >Register<i className="fa fa-spinner fa-spin"></i></button>
-                        <button className="btn btn-danger" type="button">Cancel</button>
+                        <button className="btn btn-danger" type="button" onClick={this.goToDetails}>Cancel</button>
                     </div>
     
                 </form>
