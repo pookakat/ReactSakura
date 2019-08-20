@@ -43,11 +43,13 @@ h3{
     background-image: url('./assets/bg.png');
     background-size: inherit;
     background-repeat: no-repeat;
+    min-height: 100vh;
 }
 .green-theme{
     background-image: url('./assets/japanese_bamboo_forest.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    min-height: 100vh;
 }
 .navbar{
     display: flex;
