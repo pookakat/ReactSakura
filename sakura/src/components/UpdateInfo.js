@@ -43,7 +43,7 @@ export default class UserDetails extends React.Component {
       };
     render(){
         return(
-            <div id="user-details" className="register ltpink-bkg" onLoad={this.getUserInfo}>
+            <div id="user-details" className="register" onLoad={this.getUserInfo}>
                 <form id="updateForm">
                 <div className="form-group">
                         <label className="control-label twenty">I am a: </label>
@@ -211,16 +211,23 @@ export default class UserDetails extends React.Component {
                     </div>
 
                     <div className="form-group row">
+                        <label htmlFor="password" className="col-sm-3">Old Password</label>
+                        <div className="col-sm-9">
+                            <input type="password" className="form-control" name="old-password" placeholder="Old Password" />
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
                         <label htmlFor="password" className="col-sm-3">Password</label>
                         <div className="col-sm-9">
-                            <input type="password" className="form-control" name="password" placeholder="Password" />
+                            <input type="password" className="form-control" name="password" placeholder="New Password" />
                         </div>
                     </div>
 
                     <div className="form-group row">
                         <label htmlFor="confirmPassword" className="col-sm-3">Confirm Password</label>
                         <div className="col-sm-9">
-                        <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm Password" />
+                        <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm New Password" />
                         </div>
                     </div>
 

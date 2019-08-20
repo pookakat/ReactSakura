@@ -30,6 +30,7 @@ export default class ToggleSwitch extends React.Component {
             document.getElementById('info-box').classList.add("ltpink-bkg");
             document.getElementById("myonoffswitch").setAttribute('value', false);
         }
+        console.log(document.getElementById('myonoffswitch').value);
     };
     
     render(){
@@ -38,7 +39,7 @@ export default class ToggleSwitch extends React.Component {
                 <label htmlFor="themeToggle">
                     Dont like this theme? Try: </label>
                     <div className="onoffswitch">
-                        <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch" defaultChecked  value="false"
+                        <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch" defaultChecked
                         onClick={this.toggleSwitch}/>
                         <label className="onoffswitch-label" htmlFor="myonoffswitch">
                             <span className="onoffswitch-inner"></span>
@@ -47,4 +48,9 @@ export default class ToggleSwitch extends React.Component {
                     </div>
             </div>
         )
-    }};
+    };
+
+    componentDidMount(){
+        document.getElementById("myonoffswitch").setAttribute('value', false);  
+    };
+};

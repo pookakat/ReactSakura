@@ -30,7 +30,10 @@ export default class NavBar extends React.Component {
         .then(function(res){
             console.log(res);
             const userName = res.data[0].userName;
+            const theme = res.data[0].theme;
             window.localStorage.setItem('userName', userName);
+            window.localStorage.setItem('theme', theme);
+            console.log(theme);
             window.location.assign("/loggedin"); 
         })
         .catch(function(err){

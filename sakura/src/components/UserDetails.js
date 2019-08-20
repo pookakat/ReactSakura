@@ -50,7 +50,7 @@ export default class UserDetails extends React.Component {
     
     render(){
         return(
-            <div id="user-page" className="about-us ltpink-bkg" onLoad={this.getUserInfo}>
+            <div id="user-page" className="about-us" onLoad={this.getUserInfo}>
                 <h3>Your Details</h3>
                 <hr />
                 <ul id="user-details">
