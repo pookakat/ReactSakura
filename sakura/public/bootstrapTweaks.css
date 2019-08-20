@@ -41,6 +41,8 @@ h3{
 }
 .pink-theme{
     background-image: url('./assets/bg.png');
+    background-size: inherit;
+    background-repeat: no-repeat;
 }
 .green-theme{
     background-image: url('./assets/japanese_bamboo_forest.jpg');
@@ -134,4 +136,12 @@ h3{
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px; 
+}
+#user-details{
+    list-style: none;
+}
+#choices{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
 }
