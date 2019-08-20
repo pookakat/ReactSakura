@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 
 export default class NavBar extends React.Component {
+    
     checkLogin = (event) => {
       event.preventDefault();
       const {uName, password} = document.getElementById("loginForm");
@@ -49,9 +50,11 @@ export default class NavBar extends React.Component {
             <nav id="main-nav" className="navbar navbar-expand-lg navbar-dark dkpink-bkg">
             <a className="navbar-brand" href="/"><span role="img" aria-label="flower">🌸</span> Sakura</a>
             <form className="form-inline my-2 my-lg-0" id="loginForm" onSubmit={this.checkLogin}>
-              <input className="form-control mr-sm-2" type="text" placeholder="User Name" id="uName" autoComplete="off" aria-label="Search"  />
-              <input className="form-control mr-sm-2" type="password" placeholder="Password" id="password" autoComplete="off" aria-label="Search"  />
-              <button className="btn my-2 my-sm-0 ltpink-bkg dkpink-txt" type="submit">Login</button>
+              <div id="inputs">
+                <input className="form-control mr-sm-2" type="text" placeholder="User Name" id="uName" autoComplete="off" aria-label="Search"  />
+                <input className="form-control mr-sm-2" type="password" placeholder="Password" id="password" autoComplete="off" aria-label="Search"  />
+              </div>
+              <button id="login-button" className="btn my-2 my-sm-0 ltpink-bkg dkpink-txt" type="submit">Login</button>
             </form>
           </nav>
         );
