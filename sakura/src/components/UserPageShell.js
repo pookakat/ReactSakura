@@ -18,15 +18,24 @@ function FindMatches() {
 };
 
 function AppRouter() {       
-    return (
-        <Router>
+    if (window.localStorage.getItem('userName')){
+        return (
+            <Router>
+                <div>
+                    <Route path="/loggedin/" exact component={Index} />
+                    <Route path="/loggedin/updateInfo/" exact component={UpdateRegisteredUser} />
+                    <Route path="/loggedin/findMatches/" exact component={FindMatches} />
+                </div>
+            </Router>
+        );
+    }
+    else{
+        return(
             <div>
-                <Route path="/loggedin/" exact component={Index} />
-                <Route path="/loggedin/updateInfo/" exact component={UpdateRegisteredUser} />
-                <Route path="/loggedin/findMatches/" exact component={FindMatches} />
+                <h1 className="warn">Error! No user is logged in. Please log in and try again.</h1>
             </div>
-        </Router>
-    );
+        )
+    }
 };
 
 

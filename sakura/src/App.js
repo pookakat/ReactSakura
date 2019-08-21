@@ -18,18 +18,18 @@ function UserLoggedIn(){
 }
 
 function AppRouter() {
-  return (
-    <div>
-      <NavBar />
-      <Router>
-        <div>
-          <Route path="/" exact component={Index} />
-          <Route path="/Register/" component={RegisterUser} />
-          <Route path="/LoggedIn/" component={UserLoggedIn} />
-        </div>
-      </Router>
-    </div>
-  );
-}
+    return (
+      <div>
+        <NavBar />
+        <Router>
+          <div>
+            <Route path="/" exact component={Index} />
+            <Route path="/Register/" component={RegisterUser} />
+            <Route path="/LoggedIn/" component={UserLoggedIn} />
+          </div>
+        </Router>
+      </div>
+    );
+};
 
 export default AppRouter;

@@ -241,7 +241,7 @@ export default class UserDetails extends React.Component {
                     <ToggleSwitch />
                         
                     <div className="form-group text-center">
-                        <button className="btn btn-success mr-2" id="register" onClick={this.checkUser2} type="submit" >Register<i className="fa fa-spinner fa-spin"></i></button>
+                        <button className="btn btn-success mr-2" id="update" type="submit" >Update<i className="fa fa-spinner fa-spin"></i></button>
                         <button className="btn btn-danger" type="button" onClick={this.goToDetails}>Cancel</button>
                     </div>
     
